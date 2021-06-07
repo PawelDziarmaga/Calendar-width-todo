@@ -3,20 +3,21 @@ import {Provider} from 'react-redux'
 import store from './Redux/Store/store'
 
 import Form from './Leyouts/Form/Form'
-import Nav from './Leyouts/Nav/Nav'
-import Body from './Leyouts/Body/Body'
-import Footer from './Leyouts/Footer/Footer'
+import List from './Leyouts/List/List'
+import Calendar from './Leyouts/Calendar/Calendar'
 import './App.css';
 
 function App() {
   return (
     <div className="app">
-      <h1>Calendar width todo list</h1>
       <Provider store={store}>
-        <Form />
-        <Nav />
-        <Body />
-        <Footer />
+        <div class="col_1">
+         <Form />
+         <Calendar />
+        </div>
+        <div class="col_2">
+          <List />
+        </div>
       </Provider>
     </div>
   );

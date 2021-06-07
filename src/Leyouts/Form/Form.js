@@ -7,6 +7,7 @@ function Form() {
   const [timeStart, setTimeStart] = useState('')
   const [timeDone, setTimeDone] = useState('')
   const [date, setDate] = useState('')
+  const [done, setDone] = useState(false)
 
   const onChangeHandler = (e) => {
     switch(e.target.id){
@@ -43,8 +44,9 @@ function Form() {
   }
     return (
       <div className="form">
+        <h2>Dodaj/edytuj zadanie</h2>
           <form>
-            <div>
+            <div id="quest_add">
               <label>
                 Nazwa zadania:
                 <input 
@@ -55,7 +57,7 @@ function Form() {
                   />
               </label>
             </div>
-            <div>
+            <div id="quest_time">
               <label>
                 Od godziny:
                 <input 
@@ -75,7 +77,7 @@ function Form() {
                   />
               </label>
             </div>
-            <div>
+            <div id="quest_date">
               <label>
                 Data:
                 <input 
@@ -83,6 +85,15 @@ function Form() {
                   onChange={onChangeHandler}
                   type="date"
                   value={date}
+                  />
+              </label>
+              <label>
+                Oznacz jako załatwione:
+                <input 
+                  id="done"
+                  onChange={onChangeHandler}
+                  type="checkbox"
+                  value={done}
                   />
               </label>
             </div>

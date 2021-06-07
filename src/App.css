@@ -1,30 +1,38 @@
 .app {
-  background-color: cornsilk;
-  height: 90vh;
-  width: 90%;
-  margin: 5vh 5%;
+  background-image: url("./Images_Icons/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
   padding: 5vh 5%;
-  border-radius: 5vh;
-  overflow: hidden;
   text-align: center;
+  color: #fbe8d3;
+  display: flex;
 }
-h1 {
-  height: 10%;
-  margin: 0;
+h2 {
+  font-size: 1.5em;
+}
+.col_1 {
+  width: 60%;
+}
+.col_2 {
+  width: 40%;
+}
+.form,
+.List,
+.Calendar {
+  background-color: rgb(58, 58, 58, 0.9);
+  margin: 5vh 5%;
+  border-radius: 30px;
+  box-shadow: 0px 0px 15px rgb(58, 58, 58);
 }
 .form {
-  background-color: darksalmon;
-  height: 20%;
+  height: 37.5vh;
 }
-.nav {
-  background-color: forestgreen;
-  height: 10%;
+.List {
+  height: 80vh;
 }
-.body {
-  background-color: sienna;
-  height: 50%;
-}
-.footer {
-  background-color: steelblue;
-  height: 10%;
+.Calendar {
+  height: 37.5vh;
 }

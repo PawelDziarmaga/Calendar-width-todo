@@ -1,0 +1,19 @@
+#CalendarTable {
+}
+#CalendarTable table {
+  width: 100%;
+}
+#CalendarTable table tr {
+  font-size: 1em;
+  line-height: 3.5vh;
+}
+#CalendarTable table th {
+  padding-bottom: 2vh;
+}
+#CalendarTable table td {
+  width: 14.2857%;
+  height: 3.5vh;
+}
+#CalendarTable table td:hover {
+  color: #f38181;
+}

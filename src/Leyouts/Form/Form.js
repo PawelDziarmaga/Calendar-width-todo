@@ -1,106 +1,111 @@
-import React, { useState } from 'react'
-import './Form.css'
-let id = 0;
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { allertForm } from "../../tools/Form/allertForm";
+import { addQuest } from "../../Redux/Actions/appActions";
+
+import { useSelector } from "react-redux";
+import "./Form.css";
+let id = Math.floor(Math.random() * 1000);
 
 function Form() {
-  const [quest, setQuest] = useState('')
-  const [timeStart, setTimeStart] = useState('')
-  const [timeDone, setTimeDone] = useState('')
-  const [date, setDate] = useState('')
-  const [done, setDone] = useState(false)
+	const [quest, setQuest] = useState("");
+	const [time, setTime] = useState("");
+	const [date, setDate] = useState("");
 
-  const onChangeHandler = (e) => {
-    switch(e.target.id){
-      case 'quest':
-        return setQuest(e.target.value);
-      case 'timeStart':
-        return setTimeStart(e.target.value);
-      case 'timeDone':
-        return setTimeDone(e.target.value);
-      case 'date':
-        return setDate(e.target.value);
-      default:
-        return
-    }
-    
-  }
-  const buttonHandler = (e) => {
-    e.preventDefault()
+	const rates = useSelector((store) => store.rates);
+	const dispatch = useDispatch();
 
-    if(!quest.length){
-      return;
-    }
+	const onChangeHandler = (e) => {
+		switch (e.target.id) {
+			case "quest":
+				return setQuest(e.target.value);
+			case "time":
+				return setTime(e.target.value);
+			case "date":
+				return setDate(e.target.value);
+			default:
+				return;
+		}
+	};
+	const buttonHandler = (e) => {
+		e.preventDefault();
 
+		if (!quest.length) {
+			allertForm("quest");
+			return;
+		}
+		if (!time) {
+			allertForm("time");
+			return;
+		}
+		if (!date.length) {
+			allertForm("date");
+			return;
+		}
 
-    const object ={
-      id,
-      quest,
-      date,
-      timeStart,
-      timeDone,
-    }
-    console.log(object)
-    id = id + 1;
-  }
-    return (
-      <div className="form">
-        <h2>Dodaj/edytuj zadanie</h2>
-          <form>
-            <div id="quest_add">
-              <label>
-                Nazwa zadania:
-                <input 
-                  id="quest"
-                  onChange={onChangeHandler}
-                  type="text"
-                  value={quest}
-                  />
-              </label>
-            </div>
-            <div id="quest_time">
-              <label>
-                Od godziny:
-                <input 
-                  id="timeStart"
-                  onChange={onChangeHandler}
-                  type="time"
-                  value={timeStart}
-                  />
-              </label>
-              <label>
-                Do godziny:
-                <input 
-                  id="timeDone"
-                  onChange={onChangeHandler}
-                  type="time"
-                  value={timeDone}
-                  />
-              </label>
-            </div>
-            <div id="quest_date">
-              <label>
-                Data:
-                <input 
-                  id="date"
-                  onChange={onChangeHandler}
-                  type="date"
-                  value={date}
-                  />
-              </label>
-              <label>
-                Oznacz jako załatwione:
-                <input 
-                  id="done"
-                  onChange={onChangeHandler}
-                  type="checkbox"
-                  value={done}
-                  />
-              </label>
-            </div>
-            <button onClick={buttonHandler}>Dodaj zadanie</button>
-          </form>
-      </div>
-    );
-  }
-  
-  export default Form;
+		const objectQuest = {
+			id,
+			quest,
+			date,
+			time,
+			done: false,
+		};
+
+		dispatch(addQuest(objectQuest));
+
+		id = Math.floor(Math.random() * 1000);
+		for (let i = 0; i < rates.length; i++) {
+			if (rates[i].id === id) {
+				id = Math.floor(Math.random() * 1000);
+				i = 0;
+			}
+		}
+
+		setQuest("");
+		setTime("");
+		setDate("");
+		allertForm("");
+	};
+	return (
+		<div className='form'>
+			<h2>Dodaj/edytuj zadanie</h2>
+			<form>
+				<div id='quest_add'>
+					<label>
+						Nazwa zadania:
+						<input
+							id='quest'
+							onChange={onChangeHandler}
+							type='text'
+							value={quest}
+						/>
+					</label>
+				</div>
+				<div id='quest_time'>
+					<label>
+						Godzina
+						<input
+							id='time'
+							onChange={onChangeHandler}
+							type='time'
+							value={time}
+						/>
+					</label>
+					<label>
+						Data:
+						<input
+							id='date'
+							onChange={onChangeHandler}
+							type='date'
+							value={date}
+						/>
+					</label>
+				</div>
+				<button onClick={buttonHandler}>Dodaj zadanie</button>
+			</form>
+		</div>
+	);
+}
+
+export default Form;

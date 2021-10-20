@@ -1,0 +1,27 @@
+#CalendarTable {
+	table {
+		margin: 0 auto;
+		height: 20vh;
+		padding: 5px;
+		border: 1px solid rgba(250, 250, 250, 0.3);
+		border-collapse: 20px;
+		cursor: pointer;
+		tr {
+			font-size: 1.3em;
+		}
+		th {
+			font-size: 0.7em;
+		}
+		td {
+			border: 1px solid rgba(250, 250, 250, 0.3);
+			&:hover {
+				color: #f38181;
+			}
+		}
+	}
+}
+
+.today {
+	background-color: rgba(243, 129, 129, 0.5);
+	color: rgba(58, 58, 58, 0.9);
+}

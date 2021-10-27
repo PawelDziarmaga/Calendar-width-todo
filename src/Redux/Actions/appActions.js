@@ -3,13 +3,14 @@ export const DELETE_QUEST = "DELETE_QUEST";
 export const EDIT_QUEST = "EDIT_QUEST";
 export const DONE_QUEST = "DONE_QUEST";
 
-export const addQuest = ({ id, quest, date, time }) => ({
+export const addQuest = ({ id, quest, date, time, done }) => ({
 	type: ADD_QUEST,
 	payload: {
 		id,
 		quest,
 		date,
 		time,
+		done,
 	},
 });
 

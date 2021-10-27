@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import CalendarHeder from "./CalendarHeader/CalendarHeader";
 import CalendarTable from "./CalendarTable/CalendarTable";

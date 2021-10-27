@@ -1,36 +1,59 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { editQuest } from "../../Redux/Actions/appActions";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
+import { editQuest } from "../../Redux/Actions/appActions";
 import { sortList } from "../../tools/List/sortList";
 
 function List({ dateFilter = "2021-10-15" }) {
-	/*********** Sort Table ************/
-	let quest = useSelector((store) => store.rates);
-	quest.sort(sortList);
-	const [questSort, setQuestSort] = useState(
-		quest.filter((rate) => rate.done === false)
-	);
+	const quest = useSelector((store) => store.rates);
+	const [category, setCategory] = useState("todo"); // category for filter
+	const [list, setList] = useState(""); // list of quest
+	let questSort = "";
 
-	const sortCategory = (e) => {
-		console.log(questSort);
-		const category = e.target.classList[0];
-		switch (category) {
-			case "todo":
-				setQuestSort(quest.filter((rate) => rate.done === false));
-				return;
-			case "done":
-				setQuestSort(quest.filter((rate) => rate.done === true));
-				return;
-			case "day":
-				setQuestSort(quest.filter((rate) => rate.date === dateFilter));
-				return;
-			default:
-				return;
+	quest.sort(sortList); // sort list by date and time
+
+	// Filtr list element by choosen category
+	const filterCategory = (e = false, category, quest) => {
+		let filterCcategory;
+
+		if (e) {
+			filterCcategory = e.target.classList[0];
+		} else {
+			filterCcategory = category;
 		}
+
+		let filterquest = [...quest];
+
+		if (filterCcategory === "done") {
+			questSort = filterquest.filter((rate) => rate.done === true);
+		} else if (filterCcategory === "day") {
+			questSort = filterquest.filter((rate) => rate.date === dateFilter);
+		} else {
+			questSort = filterquest.filter((rate) => rate.done === false);
+		}
+		setCategory(filterCcategory);
+		createSortList(questSort);
+	};
+	// Create list elements
+	const createSortList = (questSort) => {
+		const list = questSort.map((rate) => (
+			<div key={rate.id} className='List__element'>
+				<p>
+					<span className='List__element__data'>{rate.date}</span>{" "}
+					<span className='List__element__quest'>{rate.quest}</span>{" "}
+					<span className='List__element__time'>{rate.time}</span>
+					{rate.done ? null : (
+						<button className={rate.id} onClick={endQuest}>
+							zakończ
+						</button>
+					)}
+				</p>
+			</div>
+		));
+		setList(list);
 	};
 
+	// change stor element
 	const dispatch = useDispatch();
 	const endQuest = (e) => {
 		const id = e.target.classList[0];
@@ -40,39 +63,34 @@ function List({ dateFilter = "2021-10-15" }) {
 		};
 
 		dispatch(editQuest(objectQuest));
-		console.log(questSort);
 	};
 
-	const ratesElements = questSort.map((rate) => (
-		<div className='List__element'>
-			<p>
-				<span className='List__element__data'>{rate.date}</span>{" "}
-				<span className='List__element__quest'>{rate.quest}</span>{" "}
-				<span className='List__element__time'>{rate.time}</span>
-				{rate.done ? null : (
-					<button className={rate.id} onClick={endQuest}>
-						zakończ
-					</button>
-				)}
-			</p>
-		</div>
-	));
+	// Show list the first time, refreshing after deleting items
+	useEffect(() => {
+		filterCategory(false, category, quest);
+	}, [category, quest]);
 
 	return (
 		<div className='List'>
 			<h2>Lista zadań</h2>
 			<div>
-				<button onClick={sortCategory} className='todo top-button'>
+				<button
+					onClick={(e) => filterCategory(e, category, quest)}
+					className='todo top-button'>
 					Do zrobienia
 				</button>
-				<button onClick={sortCategory} className='done top-button'>
+				<button
+					onClick={(e) => filterCategory(e, category, quest)}
+					className='done top-button'>
 					zrobione
 				</button>
-				<button onClick={sortCategory} className='day top-button'>
+				<button
+					onClick={(e) => filterCategory(e, category, quest)}
+					className='day top-button'>
 					Z dnia {dateFilter}
 				</button>
 			</div>
-			{ratesElements}
+			{list}
 		</div>
 	);
 }

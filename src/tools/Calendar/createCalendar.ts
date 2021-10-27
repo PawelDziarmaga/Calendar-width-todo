@@ -57,7 +57,8 @@ export const createCalendar = (
 		}
 		const td = document.createElement("td");
 		td.innerText = `${i - firtDayOfMonth + 2}`;
-		td.classList.add("day");
+		td.classList.add(`day`);
+		td.classList.add(`${i - firtDayOfMonth + 2}`);
 
 		if (
 			year === now.getFullYear() &&

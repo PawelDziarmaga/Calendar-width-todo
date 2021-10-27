@@ -28,6 +28,7 @@ function Form() {
 				return;
 		}
 	};
+
 	const buttonHandler = (e) => {
 		e.preventDefault();
 

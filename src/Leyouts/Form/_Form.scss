@@ -1,0 +1,50 @@
+form {
+	font-size: 0.5em;
+	text-align: left;
+	margin-left: 5%;
+	input {
+		height: 4vh;
+		background-color: rgba(250, 250, 250, 0.8);
+	}
+	#quest_add {
+		margin: 2vh 0;
+		input {
+			width: 70%;
+			margin: 0 5%;
+		}
+	}
+
+	#quest_time {
+		margin: 2vh 0;
+		input {
+			width: 30%;
+			margin: 0 5%;
+		}
+	}
+	#quest_date {
+		margin: 2vh 0;
+		input {
+			width: 30%;
+			margin: 0 5%;
+		}
+	}
+	button {
+		font-size: 1em;
+		font-weight: 700;
+		text-align: center;
+		margin-left: 50%;
+		height: 5vh;
+		width: 40%;
+		background-color: rgba(250, 250, 250, 0.8);
+		border-radius: 1.5vh;
+		color: rgb(58, 58, 58);
+		&:hover {
+			background-color: rgb(58, 58, 58);
+			border-radius: 1.5vh;
+			color: rgba(250, 250, 250, 0.8);
+		}
+	}
+	.empty-field {
+		background-color: red;
+	}
+}

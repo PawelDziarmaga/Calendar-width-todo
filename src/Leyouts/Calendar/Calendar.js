@@ -1,9 +1,12 @@
-import { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 
 import CalendarHeder from "./CalendarHeader/CalendarHeader";
 import CalendarTable from "./CalendarTable/CalendarTable";
+import { markQuest } from "../../tools/Calendar/markQuest";
 
-function Calendar() {
+function Calendar({ setDateFilter }) {
+	const quest = useSelector((store) => store.rates);
 	const now = new Date();
 	const [month, setMonth] = useState(now.getMonth());
 	const [year, setYear] = useState(now.getFullYear());
@@ -27,7 +30,29 @@ function Calendar() {
 			}
 			setMonth((prev) => --prev);
 		}
+		markQuest(quest);
 	};
+	const clickData = ({ target }) => {
+		let clickDay = target.classList[1];
+		console.log();
+		if (clickDay.length === 1) {
+			clickDay = "0" + clickDay;
+		}
+		const clickMonth = month + 1;
+		const clickYear = year;
+
+		const dataFilter = clickYear + "-" + clickMonth + "-" + clickDay;
+		setDateFilter("");
+		setDateFilter(dataFilter);
+	};
+	let days = useRef();
+	useEffect(() => {
+		days.current = document.getElementsByClassName("day");
+
+		for (let i = 0; i < days.current.length; i++) {
+			days.current[i].addEventListener("click", clickData);
+		}
+	});
 
 	return (
 		<div className='Calendar'>

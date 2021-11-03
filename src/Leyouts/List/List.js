@@ -4,7 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { editQuest } from "../../Redux/Actions/appActions";
 import { sortList } from "../../tools/List/sortList";
 
-function List({ dateFilter = "2021-10-15" }) {
+import { endQuest } from "../../tools/List/endQuest";
+
+function List({ dateFilter }) {
+	// change stor element aftr deleting
+	const dispatch = useDispatch();
+
 	const quest = useSelector((store) => store.rates);
 	const [category, setCategory] = useState("todo"); // category for filter
 	const [list, setList] = useState(""); // list of quest
@@ -14,10 +19,15 @@ function List({ dateFilter = "2021-10-15" }) {
 
 	// Filtr list element by choosen category
 	const filterCategory = (e = false, category, quest) => {
+		const topButtonsElement = document.getElementsByClassName("top-button");
+
+		for (let i = 0; i < topButtonsElement.length; i++) {
+			topButtonsElement[i].classList.remove("active");
+		}
 		let filterCcategory;
 
 		if (e) {
-			filterCcategory = e.target.classList[0];
+			filterCcategory = e.target.classList[1];
 		} else {
 			filterCcategory = category;
 		}
@@ -26,11 +36,19 @@ function List({ dateFilter = "2021-10-15" }) {
 
 		if (filterCcategory === "done") {
 			questSort = filterquest.filter((rate) => rate.done === true);
-		} else if (filterCcategory === "day") {
+		} else if (filterCcategory === "btn") {
 			questSort = filterquest.filter((rate) => rate.date === dateFilter);
 		} else {
 			questSort = filterquest.filter((rate) => rate.done === false);
 		}
+		let choosenElement = document.getElementsByClassName(
+			`top-button ${filterCcategory}`
+		);
+
+		if (choosenElement[0].classList !== undefined) {
+			choosenElement[0].classList.add("active");
+		}
+
 		setCategory(filterCcategory);
 		createSortList(questSort);
 	};
@@ -43,7 +61,13 @@ function List({ dateFilter = "2021-10-15" }) {
 					<span className='List__element__quest'>{rate.quest}</span>{" "}
 					<span className='List__element__time'>{rate.time}</span>
 					{rate.done ? null : (
-						<button className={rate.id} onClick={endQuest}>
+						<button
+							className={rate.id}
+							onClick={(e) =>
+								dispatch(
+									editQuest(endQuest(e.target.classList[0]))
+								)
+							}>
 							zakończ
 						</button>
 					)}
@@ -53,44 +77,33 @@ function List({ dateFilter = "2021-10-15" }) {
 		setList(list);
 	};
 
-	// change stor element
-	const dispatch = useDispatch();
-	const endQuest = (e) => {
-		const id = e.target.classList[0];
-		const objectQuest = {
-			id,
-			done: true,
-		};
-
-		dispatch(editQuest(objectQuest));
-	};
-
 	// Show list the first time, refreshing after deleting items
 	useEffect(() => {
 		filterCategory(false, category, quest);
-	}, [category, quest]);
+	}, [quest]);
+	useEffect(() => {
+		filterCategory(false, "btn", quest);
+	}, [dateFilter]);
+
+	const topButtons = [
+		["todo", "Do zrobienia"],
+		["done", "Zakończone"],
+		["btn", `Z dnia ${dateFilter}`],
+	];
+	const topButtonsElements = topButtons.map((element) => (
+		<button
+			key={element[0]}
+			onClick={(e) => filterCategory(e, category, quest)}
+			className={`top-button ${element[0]}`}>
+			{element[1]}
+		</button>
+	));
 
 	return (
 		<div className='List'>
 			<h2>Lista zadań</h2>
-			<div>
-				<button
-					onClick={(e) => filterCategory(e, category, quest)}
-					className='todo top-button'>
-					Do zrobienia
-				</button>
-				<button
-					onClick={(e) => filterCategory(e, category, quest)}
-					className='done top-button'>
-					zrobione
-				</button>
-				<button
-					onClick={(e) => filterCategory(e, category, quest)}
-					className='day top-button'>
-					Z dnia {dateFilter}
-				</button>
-			</div>
-			{list}
+			<div>{topButtonsElements}</div>
+			{list.length === 0 ? "brak zadań" : list}
 		</div>
 	);
 }

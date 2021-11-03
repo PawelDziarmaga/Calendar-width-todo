@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Provider } from "react-redux";
 import store from "./Redux/Store/store";
 
@@ -7,15 +7,26 @@ import List from "./Leyouts/List/List";
 import Calendar from "./Leyouts/Calendar/Calendar";
 
 function App() {
+	let now = new Date();
+	let nowDay = now.getDay();
+
+	if (nowDay < 10) {
+		nowDay = "0" + nowDay;
+	}
+	const nowYear = now.getFullYear();
+	const nowMonth = now.getMonth();
+	now = nowDay + "-" + nowMonth + "-" + nowYear;
+	const [dateFilter, setDateFilter] = useState(now);
+
 	return (
 		<div className='app'>
 			<Provider store={store}>
 				<div class='col_1'>
 					<Form />
-					<Calendar />
+					<Calendar setDateFilter={setDateFilter} />
 				</div>
 				<div class='col_2'>
-					<List />
+					<List dateFilter={dateFilter} />
 				</div>
 			</Provider>
 		</div>

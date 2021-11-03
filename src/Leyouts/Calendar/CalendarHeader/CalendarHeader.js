@@ -9,7 +9,7 @@ function CalendarHeader({ click, month, year }) {
 		"lipiec",
 		"siepień",
 		"wrzesień",
-		"pażdziernik",
+		"październik",
 		"listopad",
 		"grudzień",
 	];

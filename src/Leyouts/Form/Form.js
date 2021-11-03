@@ -5,7 +5,7 @@ import { allertForm } from "../../tools/Form/allertForm";
 import { addQuest } from "../../Redux/Actions/appActions";
 
 import { useSelector } from "react-redux";
-import "./Form.css";
+
 let id = Math.floor(Math.random() * 1000);
 
 function Form() {

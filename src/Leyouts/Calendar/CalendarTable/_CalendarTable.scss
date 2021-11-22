@@ -1,19 +1,22 @@
 #CalendarTable {
 	table {
 		margin: 0 auto;
-		height: 20vh;
 		padding: 5px;
 		border: 1px solid rgba(250, 250, 250, 0.3);
-		border-collapse: 20px;
 		cursor: pointer;
+
 		tr {
-			font-size: 1.3em;
+			font-size: 1.6em;
+			@media screen and (max-width: 500px) {
+				font-size: 1em;
+			}
 		}
 		th {
-			font-size: 0.7em;
+			font-size: 0.3em;
 		}
 		td {
 			border: 1px solid rgba(250, 250, 250, 0.3);
+
 			&:hover {
 				color: #f38181;
 			}
@@ -26,6 +29,17 @@
 	color: rgba(58, 58, 58, 0.9);
 }
 .todos {
-	background-color: rgba(129, 243, 167, 0.5);
-	color: rgba(58, 58, 58, 0.9);
+	&:after {
+		position: absolute;
+		height: 10px;
+		width: 10px;
+		border-radius: 50%;
+		background-color: rgba(148, 243, 129, 0.5);
+		content: "";
+		margin: 5px 0px;
+		@media screen and (max-width: 480px) {
+			height: 7px;
+			width: 7px;
+		}
+	}
 }

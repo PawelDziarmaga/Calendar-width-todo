@@ -56,22 +56,18 @@ function List({ dateFilter }) {
 	const createSortList = (questSort) => {
 		const list = questSort.map((rate) => (
 			<div key={rate.id} className='List__element'>
-				<p>
-					<span className='List__element__data'>{rate.date}</span>{" "}
-					<span className='List__element__quest'>{rate.quest}</span>{" "}
-					<span className='List__element__time'>{rate.time}</span>
-					{rate.done ? null : (
-						<button
-							className={rate.id}
-							onClick={(e) =>
-								dispatch(
-									editQuest(endQuest(e.target.classList[0]))
-								)
-							}>
-							zakończ
-						</button>
-					)}
-				</p>
+				<span className='List__element__data'>{rate.date}</span>{" "}
+				<span className='List__element__quest'>{rate.quest}</span>{" "}
+				<span className='List__element__time'>{rate.time}</span>
+				{rate.done ? null : (
+					<button
+						className={rate.id}
+						onClick={(e) =>
+							dispatch(editQuest(endQuest(e.target.classList[0])))
+						}>
+						zakończ
+					</button>
+				)}
 			</div>
 		));
 		setList(list);

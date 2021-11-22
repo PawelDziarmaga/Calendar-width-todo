@@ -9,26 +9,28 @@ form {
 	#quest_add {
 		margin: 2vh 0;
 		input {
-			width: 70%;
+			width: 80%;
 			margin: 0 5%;
 		}
 	}
 
 	#quest_time {
 		margin: 2vh 0;
+		width: 80%;
 		input {
-			width: 30%;
+			width: 80%;
 			margin: 0 5%;
 		}
 	}
 	#quest_date {
 		margin: 2vh 0;
 		input {
-			width: 30%;
+			width: 80%;
 			margin: 0 5%;
 		}
 	}
 	button {
+		margin-bottom: 10px;
 		font-size: 1em;
 		font-weight: 700;
 		text-align: center;

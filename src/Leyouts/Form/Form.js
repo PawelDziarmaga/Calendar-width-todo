@@ -74,7 +74,8 @@ function Form() {
 			<form>
 				<div id='quest_add'>
 					<label>
-						Nazwa zadania:
+						<p>Nazwa zadania:</p>
+
 						<input
 							id='quest'
 							onChange={onChangeHandler}
@@ -85,7 +86,8 @@ function Form() {
 				</div>
 				<div id='quest_time'>
 					<label>
-						Godzina
+						<p>Godzina</p>
+
 						<input
 							id='time'
 							onChange={onChangeHandler}
@@ -93,8 +95,11 @@ function Form() {
 							value={time}
 						/>
 					</label>
+				</div>
+				<div id='quest_time'>
 					<label>
-						Data:
+						<p>Data:</p>
+
 						<input
 							id='date'
 							onChange={onChangeHandler}

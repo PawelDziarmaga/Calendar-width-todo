@@ -8,20 +8,23 @@
 	text-align: center;
 	color: #fbe8d3;
 	display: flex;
+	@media screen and (max-width: 950px) {
+		display: block;
+	}
 	.col_1 {
 		width: 40%;
-		.form {
-			height: 30vh;
-		}
-
-		.Calendar {
-			height: 62vh;
+		@media screen and (max-width: 950px) {
+			width: 90%;
+			margin: 0 auto;
 		}
 	}
 	.col_2 {
 		width: 60%;
+		@media screen and (max-width: 950px) {
+			margin: 0 auto;
+			width: 90%;
+		}
 		.List {
-			height: 94vh;
 		}
 	}
 	.form,

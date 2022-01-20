@@ -70,7 +70,7 @@ function Form() {
 	};
 	return (
 		<div className='form'>
-			<h2>Dodaj/edytuj zadanie</h2>
+			<h2>Dodaj zadanie</h2>
 			<form>
 				<div id='quest_add'>
 					<label>
@@ -87,7 +87,6 @@ function Form() {
 				<div id='quest_time'>
 					<label>
 						<p>Godzina</p>
-
 						<input
 							id='time'
 							onChange={onChangeHandler}
@@ -95,11 +94,8 @@ function Form() {
 							value={time}
 						/>
 					</label>
-				</div>
-				<div id='quest_time'>
 					<label>
 						<p>Data:</p>
-
 						<input
 							id='date'
 							onChange={onChangeHandler}
@@ -107,8 +103,8 @@ function Form() {
 							value={date}
 						/>
 					</label>
+					<button onClick={buttonHandler}>Dodaj</button>
 				</div>
-				<button onClick={buttonHandler}>Dodaj zadanie</button>
 			</form>
 		</div>
 	);

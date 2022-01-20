@@ -71,3 +71,4 @@ export const createCalendar = (
 		tr.appendChild(td);
 	}
 };
+

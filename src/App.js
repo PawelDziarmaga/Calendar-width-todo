@@ -7,6 +7,7 @@ import List from "./Leyouts/List/List";
 import Calendar from "./Leyouts/Calendar/Calendar";
 
 function App() {
+	//Change the date format
 	let now = new Date();
 	let nowDay = now.getDay();
 
@@ -16,6 +17,8 @@ function App() {
 	const nowYear = now.getFullYear();
 	const nowMonth = now.getMonth();
 	now = nowDay + "-" + nowMonth + "-" + nowYear;
+
+	//Transfer the selected day from the calendar(onClick) to the list(filter)
 	const [dateFilter, setDateFilter] = useState(now);
 
 	return (

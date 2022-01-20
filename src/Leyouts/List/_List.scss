@@ -1,5 +1,7 @@
 .List {
 	overflow: auto;
+	min-height: 50vh;
+
 	&__element {
 		font-size: 20px;
 		padding-left: 5%;

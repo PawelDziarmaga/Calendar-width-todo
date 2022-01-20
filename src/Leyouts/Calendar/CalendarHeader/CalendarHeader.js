@@ -1,6 +1,6 @@
 function CalendarHeader({ click, month, year }) {
 	const months = [
-		"stczeń",
+		"styczeń",
 		"luty",
 		"marzec",
 		"kwiecień",

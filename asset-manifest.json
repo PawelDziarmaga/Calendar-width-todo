@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Calendar-width-todo/static/css/main.18334cb6.chunk.css",
-    "main.js": "/Calendar-width-todo/static/js/main.79a4e4d8.chunk.js",
-    "main.js.map": "/Calendar-width-todo/static/js/main.79a4e4d8.chunk.js.map",
+    "main.css": "/Calendar-width-todo/static/css/main.220156a0.chunk.css",
+    "main.js": "/Calendar-width-todo/static/js/main.3edee6c8.chunk.js",
+    "main.js.map": "/Calendar-width-todo/static/js/main.3edee6c8.chunk.js.map",
     "runtime-main.js": "/Calendar-width-todo/static/js/runtime-main.6ceedecd.js",
     "runtime-main.js.map": "/Calendar-width-todo/static/js/runtime-main.6ceedecd.js.map",
     "static/js/2.0b2fa106.chunk.js": "/Calendar-width-todo/static/js/2.0b2fa106.chunk.js",
     "static/js/2.0b2fa106.chunk.js.map": "/Calendar-width-todo/static/js/2.0b2fa106.chunk.js.map",
     "index.html": "/Calendar-width-todo/index.html",
-    "static/css/main.18334cb6.chunk.css.map": "/Calendar-width-todo/static/css/main.18334cb6.chunk.css.map",
+    "static/css/main.220156a0.chunk.css.map": "/Calendar-width-todo/static/css/main.220156a0.chunk.css.map",
     "static/js/2.0b2fa106.chunk.js.LICENSE.txt": "/Calendar-width-todo/static/js/2.0b2fa106.chunk.js.LICENSE.txt",
     "static/media/style.css": "/Calendar-width-todo/static/media/background.2947a4e8.png"
   },
   "entrypoints": [
     "static/js/runtime-main.6ceedecd.js",
     "static/js/2.0b2fa106.chunk.js",
-    "static/css/main.18334cb6.chunk.css",
-    "static/js/main.79a4e4d8.chunk.js"
+    "static/css/main.220156a0.chunk.css",
+    "static/js/main.3edee6c8.chunk.js"
   ]
 }

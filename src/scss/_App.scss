@@ -1,3 +1,5 @@
+@import "./colors";
+
 .app {
 	background-image: url("../Images_Icons/background.png");
 	background-repeat: no-repeat;
@@ -6,11 +8,21 @@
 	height: 100vh;
 	width: 100%;
 	text-align: center;
-	color: #fbe8d3;
+	color: $color-font-one;
 	display: flex;
+	padding: 10vh 10%;
+
+	@media screen and (max-width: 1500px) {
+		padding: 10vh 5%;
+	}
 	@media screen and (max-width: 950px) {
 		display: block;
+		padding: 5vh 5%;
 	}
+	@media screen and (max-width: 700px) {
+		padding: 5vh 0%;
+	}
+
 	.col_1 {
 		width: 40%;
 		@media screen and (max-width: 950px) {
@@ -28,9 +40,9 @@
 	.form,
 	.List,
 	.Calendar {
-		background-color: rgba(58, 58, 58, 0.9);
-		margin: 2vh 2%;
+		background-color: $color-background-one;
+		margin: 5vh 5%;
 		border-radius: 30px;
-		box-shadow: 0px 0px 15px rgb(58, 58, 58);
+		box-shadow: $shadows;
 	}
 }

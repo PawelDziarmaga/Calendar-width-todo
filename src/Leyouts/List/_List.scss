@@ -8,15 +8,21 @@
 		text-align: left;
 		display: flex;
 		flex-wrap: nowrap;
-		@media screen and (max-width: 500px) {
-			font-size: 0.5em;
+		@media screen and (max-width: 1200px) {
+			font-size: 18px;
+		}
+		@media screen and (max-width: 1050px) {
+			font-size: 15px;
+		}
+		@media screen and (max-width: 550px) {
+			font-size: 12px;
 		}
 		&__data {
 			margin-right: 10px;
 			margin-bottom: 10px;
 			width: 20%;
 			text-align: center;
-			box-shadow: 0 0 5px black;
+			border: $border;
 		}
 		&__quest {
 			margin-right: 10px;
@@ -24,12 +30,12 @@
 			width: 45%;
 			padding-left: 5px;
 
-			box-shadow: 0 0 5px black;
+			border: $border;
 		}
 		&__time {
 			width: 10%;
 			text-align: center;
-			box-shadow: 0 0 5px black;
+			border: $border;
 			margin-right: 10px;
 			margin-bottom: 10px;
 		}
@@ -39,13 +45,12 @@
 			font-size: 1em;
 			margin: 5px;
 			text-align: center;
-			background-color: rgba(250, 250, 250, 0.8);
+			background-color: $color-background-two;
 			border-radius: 7px;
-			color: rgb(58, 58, 58);
+			color: $color-font-two;
 			&:hover {
-				background-color: rgb(58, 58, 58);
-
-				color: rgba(250, 250, 250, 0.8);
+				background-color: $color-font-two;
+				color: $color-font-one;
 			}
 		}
 	}
@@ -55,21 +60,19 @@
 		font-size: 20px;
 		margin: 5px;
 		text-align: center;
-		background-color: rgba(250, 250, 250, 0.8);
-		border-radius: 1.5vh;
-		color: rgb(58, 58, 58);
+		background-color: $color-background-two;
+		border-radius: 7px;
+		color: $color-font-two;
 		@media screen and (max-width: 700px) {
 			font-size: 0.5em;
 		}
 		&:hover {
-			background-color: rgb(58, 58, 58);
-			border-radius: 1.5vh;
-			color: rgba(250, 250, 250, 0.8);
+			background-color: $color-font-two;
+			color: $color-font-one;
 		}
 	}
 	.active {
-		background-color: rgb(58, 58, 58);
-		border-radius: 1.5vh;
-		color: #f38181;
+		background-color: $color-font-two;
+		color: $color-font-one;
 	}
 }

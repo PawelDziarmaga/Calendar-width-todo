@@ -23,6 +23,7 @@ export const markQuest = (
 	];
 	let days = document.querySelectorAll("#CalendarTable .day");
 
+	//Separation of the year and month name from the calendar header
 	let monthAndYear = document
 		.querySelector(".CalendarHeader h3")
 		?.innerHTML.split(" ");
@@ -33,6 +34,7 @@ export const markQuest = (
 
 	const actualMonth = months.indexOf(monthAndYear[0]) + 1;
 	const actualYear = monthAndYear[1];
+
 	for (let j = 0; j < quest.length; j++) {
 		if (quest[j].done === false) {
 			const date = quest[j].date.split("-");
@@ -45,7 +47,7 @@ export const markQuest = (
 			const year = date[0];
 
 			for (let i = 0; i < days.length; i++) {
-				if (days[i].innerHTML === day) {
+				if (days[i].classList[1] === day) {
 					if (month === actualMonth) {
 						if (year === actualYear) {
 							days[i].classList.add("todos");

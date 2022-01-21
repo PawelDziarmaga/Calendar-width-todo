@@ -4,7 +4,7 @@ form {
 	margin-left: 5%;
 	input {
 		height: 4vh;
-		background-color: rgba(250, 250, 250, 0.8);
+		background-color: $color-background-two;
 	}
 	#quest_add {
 		margin: 2vh 0;
@@ -30,17 +30,17 @@ form {
 			font-size: 1em;
 			font-weight: 700;
 			text-align: center;
-			background-color: rgba(250, 250, 250, 0.8);
+			background-color: $color-background-two;
 			border-radius: 8px;
-			color: rgb(58, 58, 58);
+			color: $color-font-two;
 			&:hover {
-				background-color: rgb(58, 58, 58);
+				background-color: $color-background-one;
 
-				color: rgba(250, 250, 250, 0.8);
+				color: $color-font-one;
 			}
 		}
 	}
 	.empty-field {
-		background-color: red;
+		background-color: $color-mark-one;
 	}
 }

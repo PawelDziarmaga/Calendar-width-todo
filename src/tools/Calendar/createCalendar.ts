@@ -44,8 +44,10 @@ export const createCalendar = (
 	//Create  empty cells on the table
 	for (let i = 0; i < firtDayOfMonth - 1; i++) {
 		const td = document.createElement("td");
-		td.innerHTML = "";
+		const p = document.createElement("p");
+		p.innerHTML = "";
 		tr.appendChild(td);
+		td.appendChild(p);
 	}
 	//Create  days on the table
 	let j = daysInMonth + firtDayOfMonth - 1;
@@ -56,9 +58,11 @@ export const createCalendar = (
 			tab.appendChild(tr);
 		}
 		const td = document.createElement("td");
-		td.innerText = `${i - firtDayOfMonth + 2}`;
+		const p = document.createElement("p");
+		p.innerText = `${i - firtDayOfMonth + 2}`;
 		td.classList.add(`day`);
 		td.classList.add(`${i - firtDayOfMonth + 2}`);
+		p.classList.add(`${i - firtDayOfMonth + 2}`);
 
 		if (
 			year === now.getFullYear() &&
@@ -69,6 +73,6 @@ export const createCalendar = (
 		}
 
 		tr.appendChild(td);
+		td.appendChild(p);
 	}
 };
-

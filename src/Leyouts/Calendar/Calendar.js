@@ -40,9 +40,9 @@ function Calendar({ setDateFilter }) {
 
 	//Transfer the selected day from the calendar(onClick) to the list(filter)
 	const clickData = ({ target }) => {
-		let clickDay = target.classList[1];
+		let clickDay = target.classList[0];
 
-		if (clickDay.length === 1) {
+		if (clickDay < 10) {
 			clickDay = "0" + clickDay;
 		}
 		let clickMonth = month + 1;

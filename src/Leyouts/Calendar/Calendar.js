@@ -40,6 +40,7 @@ function Calendar({ setDateFilter }) {
 
 	//Transfer the selected day from the calendar(onClick) to the list(filter)
 	const clickData = ({ target }) => {
+		console.log(target);
 		let clickDay = target.classList[0];
 
 		if (clickDay < 10) {

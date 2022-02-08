@@ -9,13 +9,18 @@ import Calendar from "./Leyouts/Calendar/Calendar";
 function App() {
 	//Change the date format
 	let now = new Date();
-	let nowDay = now.getDay();
+
+	let nowDay = now.getDate();
 
 	if (nowDay < 10) {
 		nowDay = "0" + nowDay;
 	}
 	const nowYear = now.getFullYear();
-	const nowMonth = now.getMonth();
+	let nowMonth = now.getMonth() + 1;
+	if (nowMonth < 10) {
+		nowMonth = "0" + nowMonth;
+	}
+
 	now = nowDay + "-" + nowMonth + "-" + nowYear;
 
 	//Transfer the selected day from the calendar(onClick) to the list(filter)

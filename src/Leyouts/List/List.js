@@ -8,6 +8,7 @@ import { endQuest } from "../../tools/List/endQuest";
 
 function List({ dateFilter }) {
 	// change stor element aftr deleting
+
 	const dispatch = useDispatch();
 
 	const quest = useSelector((store) => store.rates);

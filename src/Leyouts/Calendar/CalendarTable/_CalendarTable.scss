@@ -54,6 +54,9 @@
 			color: $color-background-one;
 		}
 	}
+	td.markDay {
+		border: 2px solid $color-mark-one;
+	}
 }
 
 .todos::before {

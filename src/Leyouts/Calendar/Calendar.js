@@ -12,6 +12,7 @@ function Calendar({ setDateFilter }) {
 	const now = new Date();
 	const [month, setMonth] = useState(now.getMonth());
 	const [year, setYear] = useState(now.getFullYear());
+	const [markActiveDayDate, setMarkActiveDayDate] = useState("");
 
 	//Handling of month changes at the border of the years
 	if (month === 12) {
@@ -39,8 +40,8 @@ function Calendar({ setDateFilter }) {
 	};
 
 	//Transfer the selected day from the calendar(onClick) to the list(filter)
+	let dataFilter = "";
 	const clickData = ({ target }) => {
-		console.log(target);
 		let clickDay = target.classList[0];
 
 		if (clickDay < 10) {
@@ -54,9 +55,10 @@ function Calendar({ setDateFilter }) {
 
 		const clickYear = year;
 
-		const dataFilter = clickYear + "-" + clickMonth + "-" + clickDay;
+		dataFilter = clickYear + "-" + clickMonth + "-" + clickDay;
 		setDateFilter("");
 		setDateFilter(dataFilter);
+		setMarkActiveDayDate(dataFilter);
 	};
 
 	let days = useRef();
@@ -66,14 +68,22 @@ function Calendar({ setDateFilter }) {
 		days.current = document.getElementsByClassName("day");
 
 		for (let i = 0; i < days.current.length; i++) {
-			days.current[i].addEventListener("click", clickData);
+			days.current[i].addEventListener("click", (t) => {
+				clickData(t);
+			});
 		}
 	});
 
 	return (
 		<div className='Calendar'>
 			<CalendarHeder click={handleClick} month={month} year={year} />
-			<CalendarTable month={month} year={year} day={day} now={now} />
+			<CalendarTable
+				month={month}
+				year={year}
+				day={day}
+				now={now}
+				markActiveDayDate={markActiveDayDate}
+			/>
 		</div>
 	);
 }

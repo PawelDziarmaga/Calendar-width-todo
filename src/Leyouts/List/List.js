@@ -78,9 +78,6 @@ function List({ dateFilter }) {
 	useEffect(() => {
 		filterCategory(false, category, quest);
 	}, [quest]);
-	useEffect(() => {
-		filterCategory(false, "btn", quest);
-	}, [dateFilter]);
 
 	const topButtons = [
 		["todo", "Do zrobienia"],
@@ -95,7 +92,9 @@ function List({ dateFilter }) {
 			{element[1]}
 		</button>
 	));
-
+	useEffect(() => {
+		filterCategory(false, "btn", quest);
+	}, [dateFilter]);
 	return (
 		<div className='List'>
 			<h2>Lista zadań</h2>
